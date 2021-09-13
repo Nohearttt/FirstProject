@@ -8,13 +8,16 @@ public class Obstacle : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
     }
-
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.tag == "Obstacle")
+        if (collision.collider.tag == "Obstacle")
         {
             _rb.constraints = RigidbodyConstraints.FreezeAll;
             _gm.EndGame();
+            Debug.Log("Конец игры");
         }
     }
+
+
+
 }
